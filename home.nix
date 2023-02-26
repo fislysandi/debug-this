@@ -30,6 +30,26 @@
 	  nyxt
 	  ];
 
-	imports = [ ];
+	# imports = [ ]; currently none
 
-}
+home.file.".config/nvim/init.lua".text = ''
+
+		local options = {
+			number = true,
+			relativenumber = true,
+			autoindent = true,
+			tabstop = 4,
+			shiftwidth = 4,
+			softtabstop = 4,
+			mouse = "a",
+			langmenu = "en_US",
+	}
+
+	vim.api.nvim_set_keymap('v', 'Y', '"+y', { noremap = true })
+
+	for k, v in pairs(options) do
+		vim.opt[k] = v
+	end
+	'';	
+} 
+
