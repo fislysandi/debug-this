@@ -43,6 +43,7 @@ home.file.".config/nvim/init.lua".text = ''
 			softtabstop = 4,
 			mouse = "a",
 			langmenu = "en_US",
+			swapfile = false,
 	}
 
 	vim.api.nvim_set_keymap('v', 'Y', '"+y', { noremap = true })
