@@ -1,0 +1,2 @@
+/home/fislysandi/.config/nixpkgs
+/home/fislysandi/.config/nixpkgs/home.nix
