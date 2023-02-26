@@ -3,6 +3,7 @@
 pkgs.mkShell {
   name = "nixsh";
   buildInputs = with pkgs; [
-    nixFlakes
+    git
+    tmux
   ];
 }

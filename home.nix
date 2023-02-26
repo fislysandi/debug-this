@@ -27,5 +27,9 @@
 	  htop
 	  flameshot
 	  neovim
+	  nyxt
 	  ];
+
+	imports = [ ];
+
 }
