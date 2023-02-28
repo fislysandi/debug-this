@@ -29,9 +29,15 @@
 	  neovim
 	  nyxt
 	  nil
+	  gh
+	  cinnamon.warpinator
 	  ];
 
 	# imports = [ ]; currently none
+
+	  config = {
+		allowunfree = true ;
+	  };
 
 home.file.".config/nvim/init.lua".text = ''
 
@@ -52,6 +58,9 @@ home.file.".config/nvim/init.lua".text = ''
 	for k, v in pairs(options) do
 		vim.opt[k] = v
 	end
+
+	require'lspconfig'.nil_ls.setup{}
+
 	'';	
 } 
 
