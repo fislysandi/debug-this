@@ -2,7 +2,9 @@
 
 
 ## WORK IN PROGRESS
-*this home-manager configuration automatically deploys my current rice its free to use keep in mind that its as stated above work in progress*
+*this home-manager configuration automatically deploys a base building block for your rice this nix configuration is geared towards 3d artists,
+
+but in the future i will create nix-kickstart that  will leave you with good starting point for your configuration and guide through achieving what you want*  
 
 
 ## GOALS
@@ -13,7 +15,7 @@
 - use symlinks to point configuration to the dotfiles folder
 - make a short postinstall script that will automatically do all the work for you
 - make this configuration distro agnostic.
-
+- be really simple to modify and well documented to be build whatever you want!
 
 
 
