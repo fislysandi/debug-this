@@ -13,7 +13,7 @@ but in the future i will create nix-kickstart that  will leave you with good sta
 - put an entire configuration into flakes
 - separate my configuration from this repo
 - use symlinks to point configuration to the dotfiles folder
-- make a short postinstall script that will automatically do all the work for you
+- make a short postinstall script that will automatically do all the work for you(including a scripts like nixlink.sh)
 - make this configuration distro agnostic.
 - be really simple to modify and well documented to be build whatever you want!
 
