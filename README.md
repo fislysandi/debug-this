@@ -2,9 +2,9 @@
 
 
 ## WORK IN PROGRESS
-*this home-manager configuration automatically deploys a base building block for your rice this nix configuration is geared towards 3d artists,
+this home-manager configuration automatically deploys a base building block for your rice this nix configuration is geared towards 3d artists,
 
-but in the future i will create nix-kickstart that  will leave you with good starting point for your configuration and guide through achieving what you want*  
+but in the future i will create nix-kickstart that  will leave you with good starting point for your configuration and guide through achieving what you want through writing documentation  
 
 
 ## GOALS
