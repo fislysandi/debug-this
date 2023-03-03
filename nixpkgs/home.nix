@@ -29,15 +29,13 @@
 	  neovim
 	  nyxt
 	  nil
-	  gh
-	  cinnamon.warpinator
 	  ];
 
-	# imports = [ ]; currently none
-
-	  config = {
-		allowunfree = true ;
-	};
+#	# imports = [ ]; currently none
+#
+#	  config = {
+#		allowunfree = true ;
+#	};
 }
 
  
