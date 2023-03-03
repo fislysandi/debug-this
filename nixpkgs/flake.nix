@@ -17,7 +17,7 @@
     nixosModules = {};
 
     # Install Home-Manager with the non-NixOS package set
-    homeConfigurations."myuser" = home-manager.buildHomeConfig {
+    homeConfigurations."fislysandi" = home-manager.buildHomeConfig {
       configuration = {};
       packages = nonNixOSPackageSet.pkgs;
       enable = true;

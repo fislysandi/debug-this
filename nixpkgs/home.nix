@@ -31,11 +31,11 @@
 	  nil
 	  ];
 
-#	# imports = [ ]; currently none
-#
-#	  config = {
-#		allowunfree = true ;
-#	};
+	# imports = [ ./flake.nix ]; currently none
+
+	  config = {
+		allowunfree = true ;
+	};
 }
 
  
