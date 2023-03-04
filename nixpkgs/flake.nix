@@ -21,17 +21,7 @@
     # Install Home-Manager with the non-NixOS package set
     homeConfigurations."fislysandi" = home-manager.buildHomeConfig {
       configuration = {
-        home.packages = [
-          { 
-            name = "nixlinks.sh";
-            buildCommand = ''
-              mkdir -p $out
-              cp ${nixpkgs}/scripts/nixlinks.sh $out/nixlinks.sh
-              chmod +x $out/nixlinks.sh
-            '';
-            installCommand = "${out}/nixlinks.sh";
-          }
-        ];
+        home.packages = [];
         nixpkgs.config.allowUnfree = true;
         nixpkgs.config.allowUnsupportedSystem = true;
       };
