@@ -1,5 +1,5 @@
 {
-  description = "My Flake that installs Home-Manager";
+  description = "home-manager kickstart flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
@@ -16,17 +16,18 @@
   in {
     nixosModules = {};
 
-    # Install Home-Manager with the non-NixOS package set
     homeConfigurations."fislysandi" = home-manager.buildHomeConfig {
-      configuration = {};
+      configuration = {
+        home.packages = [
+          { path = "${./../nix}"; destination = "~/.config/nix"; }
+          { path = "${././nixpkgs}"; destination = "~/.config/nixpkgs"; }
+          { path = "${toString (builtins.replaceStrings "~" "~/dev/git" (toString config.homeManager.git.homeManager.configDir))}"; destination = "~/.config/nix_3drice"; }
+        ];
+      };
       packages = nonNixOSPackageSet.pkgs;
       enable = true;
     };
 
-    # Export home.nix as an output
-   
-
-    # Export imports for convenience
     imports = [ ./home.nix ];
   };
 }
