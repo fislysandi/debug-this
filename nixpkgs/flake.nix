@@ -1,10 +1,12 @@
 {
-  description = "home-manager kickstart flake";
+  description = "My Flake that installs Home-Manager";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }: let
@@ -16,18 +18,32 @@
   in {
     nixosModules = {};
 
+    # Install Home-Manager with the non-NixOS package set
     homeConfigurations."fislysandi" = home-manager.buildHomeConfig {
       configuration = {
         home.packages = [
-          { path = "${./../nix}"; destination = "~/.config/nix"; }
-          { path = "${././nixpkgs}"; destination = "~/.config/nixpkgs"; }
-          { path = "${toString (builtins.replaceStrings "~" "~/dev/git" (toString config.homeManager.git.homeManager.configDir))}"; destination = "~/.config/nix_3drice"; }
+          { 
+            name = "nixlinks.sh";
+            buildCommand = ''
+              mkdir -p $out
+              cp ${nixpkgs}/scripts/nixlinks.sh $out/nixlinks.sh
+              chmod +x $out/nixlinks.sh
+            '';
+            installCommand = "${out}/nixlinks.sh";
+          }
         ];
+        nixpkgs.config.allowUnfree = true;
+        nixpkgs.config.allowUnsupportedSystem = true;
       };
       packages = nonNixOSPackageSet.pkgs;
       enable = true;
     };
 
+    # Export home.nix as an output
+    
+
+    # Export imports for convenience
     imports = [ ./home.nix ];
-  };
+      };
+    
 }
