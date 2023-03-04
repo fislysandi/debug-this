@@ -32,7 +32,7 @@
 	  ];
 
 	# imports = [ ./flake.nix ]; currently none
-	  environment.shellInitCommand = "${builtins.toPath ./scripts/nislinks.sh}";
+
 	  config = {
 		allowunfree = true ;
 	};
