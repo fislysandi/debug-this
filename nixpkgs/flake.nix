@@ -1,39 +1,29 @@
 {
-  description = "My Flake that installs Home-Manager";
+  description = "Home Manager configuration of Jane Doe";
 
   inputs = {
+    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: let
-    nonNixOSPackageSet = import nixpkgs {
+  outputs = { nixpkgs, home-manager, ... }:
+    let
       system = "x86_64-linux";
-      overlays = [ home-manager.overlay ];
-      config = {};
-    };
-  in {
-    nixosModules = {};
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      homeConfigurations.jdoe = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-    # Install Home-Manager with the non-NixOS package set
-    homeConfigurations."fislysandi" = home-manager.buildHomeConfig {
-      configuration = {
-        home.packages = [];
-        nixpkgs.config.allowUnfree = true;
-        nixpkgs.config.allowUnsupportedSystem = true;
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [ ./home.nix ];
+
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
       };
-      packages = nonNixOSPackageSet.pkgs;
-      enable = true;
     };
-
-    # Export home.nix as an output
-    
-
-    # Export imports for convenience
-    imports = [ ./home.nix ];
-      };
-    
 }
